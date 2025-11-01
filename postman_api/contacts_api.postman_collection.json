@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "contacts-api-collection",
+		"name": "Contacts API",
+		"description": "API collection for managing contacts",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Create Contact",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"John Doe\",\n  \"email\": \"john.doe@example.com\",\n  \"phone\": \"+1234567890\",\n  \"favorite\": false\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/contacts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts"
+					]
+				},
+				"description": "Create a new contact"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/contacts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts"
+					]
+				},
+				"description": "Retrieve all contacts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All Favorite Contacts",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/contacts/favorite",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						"favorite"
+					]
+				},
+				"description": "Get all favorite contacts"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Contact By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/contacts/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "Contact ID"
+						}
+					]
+				},
+				"description": "Get a single contact by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Update Contact",
+			"request": {
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"John Doe Updated\",\n  \"email\": \"john.updated@example.com\",\n  \"phone\": \"+1234567890\",\n  \"favorite\": true\n}"
+				},
+				"url": {
+					"raw": "{{base_url}}/api/contacts/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "Contact ID"
+						}
+					]
+				},
+				"description": "Update an existing contact by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Contact By ID",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/contacts/:id",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "1",
+							"description": "Contact ID"
+						}
+					]
+				},
+				"description": "Delete a contact by ID"
+			},
+			"response": []
+		},
+		{
+			"name": "Delete All Contacts",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"url": {
+					"raw": "{{base_url}}/api/contacts",
+					"host": [
+						"{{base_url}}"
+					],
+					"path": [
+						"api",
+						"contacts"
+					]
+				},
+				"description": "Delete all contacts"
+			},
+			"response": []
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:3000",
+			"type": "string"
+		}
+	]
+}
+
