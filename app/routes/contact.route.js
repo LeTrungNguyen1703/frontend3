@@ -1,14 +1,14 @@
 const express = require('express');
 const {
-    findAll, createContact, update, deleteContact, findAllFavortie, findOne,
-    deleteAllContacts
+    findAll, create, update, delete: deleteContact, findAllFavorite, findOne,
+    deleteAll
 } = require("../controller/contact.controller");
 const router = express.Router();
 
-router.post('', createContact);
+router.post('', create);
 router.get('', findAll)
-router.delete('', deleteAllContacts);
-router.get('/favorite', findAllFavortie)
+router.delete('', deleteAll);
+router.get('/favorite', findAllFavorite)
 router.get('/:id', findOne)
 router.put('/:id', update)
 router.delete('/:id', deleteContact)
