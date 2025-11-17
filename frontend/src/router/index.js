@@ -15,6 +15,11 @@ const routes = [
         path: '/contacts/:id',
         name: 'contact.edit',
         component: () => import('../views/ContactForm.vue')
+    },
+    {
+        path: "/:pathMatch(.*)*",
+        name: "NotFound",
+        component: () => import("../views/NotFound.vue")
     }
 ];
 
