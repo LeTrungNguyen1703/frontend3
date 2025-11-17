@@ -14,11 +14,12 @@ const routes = [
     {
         path: '/contacts/:id',
         name: 'contact.edit',
-        component: () => import('../views/ContactForm.vue')
+        component: () => import('../views/ContactEdit.vue'),
+        props: true
     },
     {
         path: "/:pathMatch(.*)*",
-        name: "NotFound",
+        name: "notfound",
         component: () => import("../views/NotFound.vue")
     }
 ];
