@@ -3,9 +3,19 @@ import { createRouter, createWebHistory } from 'vue-router';
 const routes = [
     {
         path: '/',
-        name: 'home',
-        component: () => import('../components/HomePage.vue')
+        name: 'contactbook',
+        component: () => import('../views/ContactBook.vue')
     },
+    {
+        path: '/contacts/add',
+        name: 'contact.add',
+        component: () => import('../views/ContactForm.vue')
+    },
+    {
+        path: '/contacts/:id',
+        name: 'contact.edit',
+        component: () => import('../views/ContactForm.vue')
+    }
 ];
 
 const router = createRouter({

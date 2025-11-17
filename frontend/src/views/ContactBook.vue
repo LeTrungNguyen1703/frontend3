@@ -16,16 +16,22 @@
       />
       <p v-else>Không có liên hệ nào.</p>
 
-      <div class="mt-3 row justify-content-around align-items-center">
-        <button class="btn btn-sm btn-primary" @click="refreshList()">
-          <i class="fas fa-redo"></i> Làm mới
-        </button>
-        <button class="btn btn-sm btn-success" @click="goToAddContact">
-          <i class="fas fa-plus"></i> Thêm mới
-        </button>
-        <button class="btn btn-sm btn-danger" @click="removeAllContacts">
-          <i class="fas fa-trash"></i> Xóa tất cả
-        </button>
+      <div class="mt-3 row">
+        <div class="col-4 px-1">
+          <button class="btn btn-sm btn-primary btn-block" @click="refreshList()">
+            <i class="fas fa-redo"></i> Làm mới
+          </button>
+        </div>
+        <div class="col-4 px-1">
+          <button class="btn btn-sm btn-success btn-block" @click="goToAddContact">
+            <i class="fas fa-plus"></i> Thêm mới
+          </button>
+        </div>
+        <div class="col-4 px-1">
+          <button class="btn btn-sm btn-danger btn-block" @click="removeAllContacts">
+            <i class="fas fa-trash"></i> Xóa tất cả
+          </button>
+        </div>
       </div>
     </div>
 
@@ -35,7 +41,11 @@
           Chi tiết Liên hệ
           <i class="fas fa-address-card"></i>
         </h4>
-        <ContactCard :contact="activeContact" />
+        <ContactCard
+          :contact="activeContact"
+          @edit="goToEditContact"
+          @delete="onDeleteContact"
+        />
       </div>
     </div>
   </div>
@@ -113,6 +123,23 @@ export default {
     },
     goToAddContact() {
       this.$router.push({ name: "contact.add" });
+    },
+    goToEditContact(contact) {
+      this.$router.push({
+        name: "contact.edit",
+        params: { id: contact._id }
+      });
+    },
+    async onDeleteContact(contact) {
+      if (confirm(`Bạn có chắc chắn muốn xóa liên hệ "${contact.name}"?`)) {
+        try {
+          await ContactService.delete(contact._id);
+          this.refreshList();
+        } catch (error) {
+          console.log(error);
+          alert("Có lỗi xảy ra khi xóa liên hệ.");
+        }
+      }
     },
   },
   mounted() {
